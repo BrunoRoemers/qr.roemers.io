@@ -1,0 +1,6 @@
+[build]
+  # location of config files
+  base = "/"
+
+  # files hosted on Netlify (path relative to base)
+  publish = "public/"

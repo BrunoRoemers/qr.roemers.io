@@ -1,0 +1,5 @@
+# docs: https://docs.netlify.com/routing/redirects/redirect-options/#http-status-codes
+/test https://roemers.io 301
+
+# 404 QR code not found
+/*    /404.html          404
