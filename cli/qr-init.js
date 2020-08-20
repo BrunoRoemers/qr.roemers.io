@@ -1,5 +1,5 @@
 const aws = require('aws-sdk')
-const awsConfig = require('./helpers/aws-config')
+const awsConfig = require('../helpers/aws-config')
 const path = require('path')
 const fs = require('fs')
 const chalk = require('chalk')
@@ -50,16 +50,16 @@ const secretAccessKey = prompt.hide(q('AWS_SECRET_ACCESS_KEY'))
 
 // format .env body
 const envBody =
-`AWS_ACCESS_KEY_ID=${accessKey}
-AWS_SECRET_ACCESS_KEY=${secretAccessKey}
+`QR_AWS_ACCESS_KEY_ID=${accessKey}
+QR_AWS_SECRET_ACCESS_KEY=${secretAccessKey}
 `
 
 
 // set up connection
 // NOTE: override env vars (for current process only)
 //       so that awsConfig can pick them up
-process.env['AWS_ACCESS_KEY_ID'] = accessKey
-process.env['AWS_SECRET_ACCESS_KEY'] = secretAccessKey
+process.env['QR_AWS_ACCESS_KEY_ID'] = accessKey
+process.env['QR_AWS_SECRET_ACCESS_KEY'] = secretAccessKey
 const db = new aws.DynamoDB(awsConfig())
 
 // test connection
