@@ -1,4 +1,4 @@
 # docs: https://docs.netlify.com/routing/redirects/redirect-options/#http-status-codes
 
 # process QR ids with a Netlify Function (200 = url rewrite)
-/id/* /.netlify/functions/qr?id=:splat 200
+/id/* https://qr.roemers.io/.netlify/functions/qr?id=:splat 200

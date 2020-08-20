@@ -14,7 +14,7 @@ exports.handler = (event, context, callback) => {
 
   // fallback redirect
   if (!locs.hasOwnProperty(id)) {
-    callback(null, {
+    return callback(null, {
       statusCode: 301,
       headers: {
         location: 'https://roemers.io?ref=qr-fallback',
