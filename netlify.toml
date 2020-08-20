@@ -1,4 +1,7 @@
 [build]
+  # empty build command
+  command = "#"
+
   # location of config files
   base = "/"
 
@@ -7,3 +10,5 @@
 
   # Netlify Functions (path relative to base)
   functions = "functions/"
+
+  environment = {AWS_LAMBDA_JS_RUNTIME = "nodejs12.x"}
