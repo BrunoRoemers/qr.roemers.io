@@ -2,18 +2,12 @@ const aws = require('aws-sdk')
 const awsConfig = require('../helpers/aws-config')
 const path = require('path')
 const fs = require('fs')
-const initPrompt = require('prompt-sync')
+const prompt = require('../helpers/prompt')
 const q = require('../helpers/question-formatter')
 
 
 // strings
 const affirmative = ['yes', 'y', 'true', 'ok']
-
-
-// config prompt
-const prompt = initPrompt({
-  sigint: true, // default behavior for ^C
-})
 
 
 // config paths
