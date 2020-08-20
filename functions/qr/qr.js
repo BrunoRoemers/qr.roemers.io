@@ -7,6 +7,11 @@ exports.handler = (event, context, callback) => {
   // sanitize id
   const id = encodeURIComponent(event.queryStringParameters.id)
 
+  console.log('=== EVENT')
+  console.log(event)
+  console.log('=== CONTEXT')
+  console.log(context)
+
   // fallback redirect
   if (!locs.hasOwnProperty(id)) {
     callback(null, {
