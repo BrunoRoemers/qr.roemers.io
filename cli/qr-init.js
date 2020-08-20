@@ -2,8 +2,8 @@ const aws = require('aws-sdk')
 const awsConfig = require('../helpers/aws-config')
 const path = require('path')
 const fs = require('fs')
-const chalk = require('chalk')
 const initPrompt = require('prompt-sync')
+const q = require('../helpers/question-formatter')
 
 
 // strings
@@ -18,11 +18,7 @@ const prompt = initPrompt({
 
 // config paths
 const root = path.dirname(__dirname)
-const envPath = path.join(root, ".env")
-
-
-// question formatter
-const q = (message) => chalk`{dim question} ${message}: `
+const envPath = path.join(root, '.env')
 
 
 // handle existing .env
