@@ -4,10 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const prompt = require('../helpers/prompt')
 const q = require('../helpers/question-formatter')
-
-
-// strings
-const affirmative = ['yes', 'y', 'true', 'ok']
+const affirmative = require('../helpers/affirmative')
 
 
 // config paths
@@ -18,7 +15,7 @@ const envPath = path.join(root, '.env')
 // handle existing .env
 if (fs.existsSync(envPath)) {
   const resp = prompt(q('.env already exists, remove? (no)'), 'no')
-  if (affirmative.includes(resp)) {
+  if (affirmative(resp)) {
     // remove .env
     fs.unlinkSync(envPath)
     console.log('.env successfully removed!')
@@ -42,6 +39,8 @@ const secretAccessKey = prompt.hide(q('AWS_SECRET_ACCESS_KEY'))
 const envBody =
 `QR_AWS_ACCESS_KEY_ID=${accessKey}
 QR_AWS_SECRET_ACCESS_KEY=${secretAccessKey}
+QR_TABLE_DETAILS=qr-details
+QR_LINK_PATTERN=https://qr.roemers.io/id/:uuid
 `
 
 

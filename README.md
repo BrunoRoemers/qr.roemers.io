@@ -3,13 +3,13 @@
 
 ## DynamoDB
 ### qr-details
-partition key: qr-uuid
-sort key: qr-label (what is the qr code used for?)
+partition key: qr-uuid (string)
+sort key: qr-label (string) (what is the qr code used for?)
 
 
 ## qr-visits
-partition key: qr-uuid
-sort key: timestamp (when was the qr code accessed?)
+partition key: qr-uuid (string)
+sort key: created-at (number) (when was the qr code accessed?)
 
 
 ### Notes
