@@ -54,20 +54,21 @@ const secretAccessKey = prompt(
 const envBody =
 `QR_AWS_ACCESS_KEY_ID=${accessKey}
 QR_AWS_SECRET_ACCESS_KEY=${secretAccessKey}
+QR_AWS_REGION=us-east-1
+QR_AWS_ENDPOINT=dynamodb.us-east-1.amazonaws.com
 QR_TABLE_DETAILS=qr-details
 QR_DOMAIN=https://qr.roemers.io
 QR_ENDPOINT=/id(/:uuid)
 `
 
+// write out .env
+fs.writeFileSync(envPath, envBody)
+console.log('stored credentials in .env!')
 
-// set up connection
-// NOTE: override env vars (for current process only)
-//       so that awsConfig can pick them up
-process.env['QR_AWS_ACCESS_KEY_ID'] = accessKey
-process.env['QR_AWS_SECRET_ACCESS_KEY'] = secretAccessKey
-const db = new aws.DynamoDB(awsConfig())
 
 // test connection
+// NOTE: awsConfig picks up new .env file
+const db = new aws.DynamoDB(awsConfig())
 db.listTables({}, (err, data) => {
   // aws error
   if (err) throw err
@@ -75,7 +76,4 @@ db.listTables({}, (err, data) => {
   // connection works!
   console.log('connection established!')
   console.log('available tables: ', data.TableNames)
-
-  fs.writeFileSync(envPath, envBody)
-  console.log('stored credentials in .env!')
 })
