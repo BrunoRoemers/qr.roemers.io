@@ -1,4 +1,7 @@
 # docs: https://docs.netlify.com/routing/redirects/redirect-options/#http-status-codes
 
-# process QR ids with a Netlify Function (200 = url rewrite)
-/id/* https://qr.roemers.io/.netlify/functions/qr?id=:splat 200
+# process QR ids with a Netlify Function
+# NOTE: splats do not work with url rewrites (200)
+#       see: https://community.netlify.com/t/redirect-rewrite-to-function-seems-broken/18595/15
+#       QR function parses id from path
+/id/* /.netlify/functions/qr 200
