@@ -48,12 +48,12 @@ const main = async () => {
   console.log('Saving to database...')
   const params = {
     // NOTE: awsConfig has loaded .env file
-    TableName: process.env['QR_TABLE_DETAILS'],
+    TableName: process.env.QR_TABLE_DETAILS,
     Item: {
-      'qr-uuid': id,
-      'qr-label': label,
-      'qr-location': location,
-      'created-at': Date.now(),
+      uuid: id,
+      label: label,
+      location: location,
+      createdAt: Date.now(),
     },
     ReturnConsumedCapacity: 'TOTAL',
   }

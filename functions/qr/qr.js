@@ -2,7 +2,7 @@ const aws = require('aws-sdk')
 const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
 
-const endpoint = new UrlPattern(process.env['QR_ENDPOINT'])
+const endpoint = new UrlPattern(process.env.QR_ENDPOINT)
 
 // Fallback redirect
 const fallback = (ref, cb) => cb(null, {
@@ -26,8 +26,8 @@ exports.handler = async (event, ctx, cb) => {
 
   // get qr details
   const params = {
-    TableName: process.env['QR_TABLE_DETAILS'],
-    Key: { 'qr-uuid': uuid, },
+    TableName: process.env.QR_TABLE_DETAILS,
+    Key: { uuid: uuid },
     ReturnConsumedCapacity: 'TOTAL',
   }
   const res = await db.get(params).promise()
@@ -35,13 +35,13 @@ exports.handler = async (event, ctx, cb) => {
   const details = res.Item
 
   // uuid not found in db
-  if (!details || !details['qr-location']) fallback('qr-no-details', cb)
+  if (!details || !details.location) fallback('qr-no-details', cb)
   
   // redirect to final destination
   cb(null, {
     statusCode: 301,
     headers: {
-      location: encodeURI(details['qr-location'])
+      location: encodeURI(details.location)
     }
   })
 

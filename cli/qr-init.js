@@ -32,7 +32,7 @@ if (fs.existsSync(envPath)) {
 
 
 // prompt AWS_ACCESS_KEY_ID
-const defAccessKey = process.env['AWS_ACCESS_KEY_ID'] || process.env['QR_AWS_ACCESS_KEY_ID']
+const defAccessKey = process.env.QR_AWS_ACCESS_KEY_ID
 const defAccessKeyStr = defAccessKey ? ' (from env)' : ''
 const accessKey = prompt(
   q(`AWS_ACCESS_KEY_ID${defAccessKeyStr}`),
@@ -41,7 +41,7 @@ const accessKey = prompt(
 
 
 // prompt AWS_SECRET_ACCESS_KEY
-const defSecretAccessKey = process.env['AWS_SECRET_ACCESS_KEY'] || process.env['QR_AWS_SECRET_ACCESS_KEY']
+const defSecretAccessKey = process.env.QR_AWS_SECRET_ACCESS_KEY
 const defSecretAccessKeyStr = defAccessKey ? ' (from env)' : ''
 const secretAccessKey = prompt(
   q(`AWS_SECRET_ACCESS_KEY${defSecretAccessKeyStr}`),
@@ -56,7 +56,8 @@ const envBody =
 QR_AWS_SECRET_ACCESS_KEY=${secretAccessKey}
 QR_AWS_REGION=us-east-1
 QR_AWS_ENDPOINT=dynamodb.us-east-1.amazonaws.com
-QR_TABLE_DETAILS=qr-details
+QR_TABLE_DETAILS=qrDetails
+QR_TABLE_VISITS=qrVisits
 QR_DOMAIN=https://qr.roemers.io
 QR_ENDPOINT=/id(/:uuid)
 `

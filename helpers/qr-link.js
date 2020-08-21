@@ -10,8 +10,8 @@ module.exports = (uuid) => {
   dotenv.config({path: envPath})
 
   // env vars
-  const domain = process.env['QR_DOMAIN'] || ''
-  const endpoint = new UrlPattern(process.env['QR_ENDPOINT'])
+  const domain = process.env.QR_DOMAIN || ''
+  const endpoint = new UrlPattern(process.env.QR_ENDPOINT)
 
   // QR link
   return domain + endpoint.stringify({
