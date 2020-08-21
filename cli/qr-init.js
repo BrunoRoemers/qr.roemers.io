@@ -55,7 +55,8 @@ const envBody =
 `QR_AWS_ACCESS_KEY_ID=${accessKey}
 QR_AWS_SECRET_ACCESS_KEY=${secretAccessKey}
 QR_TABLE_DETAILS=qr-details
-QR_LINK_PATTERN=https://qr.roemers.io/id/:uuid
+QR_DOMAIN=https://qr.roemers.io
+QR_ENDPOINT=/id(/:uuid)
 `
 
 
