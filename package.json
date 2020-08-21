@@ -1,0 +1,20 @@
+{
+  "name": "qr.roemers.io",
+  "version": "1.0.0",
+  "repository": "git@github.com:BrunoRoemers/qr.roemers.io.git",
+  "author": "Bruno Roemers <bruno@roemers.io>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "qr:init": "node cli/qr-init.js",
+    "qr:create": "node cli/qr-create.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.738.0",
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "prompt-sync": "^4.2.0",
+    "url-pattern": "^1.0.3",
+    "uuid": "^8.3.0"
+  }
+}

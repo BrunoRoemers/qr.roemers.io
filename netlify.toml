@@ -1,6 +1,6 @@
 [build]
   # empty build command
-  command = "#"
+  command = "yarn install"
 
   # location of config files
   base = "/"
