@@ -3,7 +3,6 @@ const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
 const redirectCurry = require('./redirect-curry')
 const logVisitCurry = require('./log-visit-curry')
-const okCurry = require('./okCurry')
 
 
 
@@ -18,8 +17,7 @@ const db = new aws.DynamoDB.DocumentClient(awsConfig())
 exports.handler = async (event, ctx, cb) => {
   // init helpers
   const logVisit = logVisitCurry(db, event)
-  // const redirect = redirectCurry(cb)
-  const redirect = okCurry(cb)
+  const redirect = redirectCurry(cb)
 
 
   // parse url
