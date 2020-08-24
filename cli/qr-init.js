@@ -60,6 +60,7 @@ QR_TABLE_DETAILS=qrDetails
 QR_TABLE_VISITS=qrVisits
 QR_DOMAIN=https://qr.roemers.io
 QR_ENDPOINT=/id(/:uuid)
+QR_SOURCE_ENV=local
 `
 
 // write out .env
