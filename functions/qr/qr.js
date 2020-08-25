@@ -1,8 +1,10 @@
 const aws = require('aws-sdk')
 const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
-const redirectCurry = require('./redirect-curry')
+const redirectCurry = require('./ok-curry')
 const logVisitCurry = require('./log-visit-curry')
+const dotenv = require('dotenv')
+const path = require('path')
 
 
 
@@ -15,6 +17,12 @@ const db = new aws.DynamoDB.DocumentClient(awsConfig())
 
 
 exports.handler = async (event, ctx, cb) => {
+  // TEMP
+  const envPath = path.join(__dirname, '.env')
+  dotenv.config({path: envPath})
+  console.log('QR_TEST env var: ', process.env.QR_TEST)
+
+
   // init helpers
   const logVisit = logVisitCurry(db, event)
   const redirect = redirectCurry(cb)
