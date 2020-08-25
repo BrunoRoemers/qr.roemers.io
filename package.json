@@ -8,7 +8,8 @@
   "scripts": {
     "store-build-envs": "node bin/store-build-envs.js",
     "qr:init": "node cli/qr-init.js",
-    "qr:create": "node cli/qr-create.js"
+    "qr:create": "node cli/qr-create.js",
+    "netlify-dev:command": "yarn store-build-envs && serve static"
   },
   "dependencies": {
     "aws-sdk": "^2.738.0",
