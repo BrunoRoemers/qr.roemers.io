@@ -1,10 +1,9 @@
+const buildEnvs = require('../../build-envs.json')
 const aws = require('aws-sdk')
 const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
 const redirectCurry = require('./ok-curry')
 const logVisitCurry = require('./log-visit-curry')
-const fs = require('fs')
-const path = require('path')
 
 
 
@@ -17,18 +16,7 @@ const db = new aws.DynamoDB.DocumentClient(awsConfig())
 
 
 exports.handler = async (event, ctx, cb) => {
-  // TEMP
-  let config = {}
-  try {
-    const configPath = path.join(__dirname, 'config.json')
-    const rawConfig = fs.readFileSync(configPath)
-    config = JSON.parse(rawConfig)
-    console.log('config: ', config)
-  } catch (error) {
-    console.error(error)
-  }
-
-  console.log(config)
+  console.log(buildEnvs)
 
 
   // init helpers

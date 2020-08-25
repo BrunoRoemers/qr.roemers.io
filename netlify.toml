@@ -1,6 +1,6 @@
 [build]
   # empty build command
-  command = "yarn install"
+  command = "yarn install && yarn store-build-env"
 
   # location of config files
   base = "/"
@@ -12,3 +12,9 @@
   functions = "functions/"
 
   environment = {AWS_LAMBDA_JS_RUNTIME = "nodejs12.x"}
+
+[dev]
+  framework = "#custom"
+  command = "bash ./bin/dev.sh"
+  targetPort = 5000
+

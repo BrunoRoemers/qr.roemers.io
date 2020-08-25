@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "store-build-envs": "node bin/store-build-envs.js",
     "qr:init": "node cli/qr-init.js",
     "qr:create": "node cli/qr-create.js"
   },
