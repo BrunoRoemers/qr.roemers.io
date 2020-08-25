@@ -15,6 +15,6 @@
 
 [dev]
   framework = "#custom"
-  command = "bash ./bin/dev.sh"
+  command = "yarn netlify-dev:command"
   targetPort = 5000
 
