@@ -3,7 +3,7 @@ const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
 const redirectCurry = require('./ok-curry')
 const logVisitCurry = require('./log-visit-curry')
-const dotenv = require('dotenv')
+const fs = require('fs')
 const path = require('path')
 
 
@@ -18,9 +18,17 @@ const db = new aws.DynamoDB.DocumentClient(awsConfig())
 
 exports.handler = async (event, ctx, cb) => {
   // TEMP
-  const envPath = path.join(__dirname, '.env')
-  dotenv.config({path: envPath})
-  console.log('QR_TEST env var: ', process.env.QR_TEST)
+  let config = {}
+  try {
+    const configPath = path.join(__dirname, 'config.json')
+    const rawConfig = fs.readFileSync(configPath)
+    config = JSON.parse(rawConfig)
+    console.log('config: ', config)
+  } catch (error) {
+    console.error(error)
+  }
+
+  console.log(config)
 
 
   // init helpers
