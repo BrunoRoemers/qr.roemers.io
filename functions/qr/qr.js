@@ -1,7 +1,7 @@
 const aws = require('aws-sdk')
 const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
-const redirectCurry = require('./redirect-curry')
+const redirectCurry = require('./ok-curry')
 const logVisitCurry = require('./log-visit-curry')
 
 
