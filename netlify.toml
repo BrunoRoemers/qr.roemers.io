@@ -1,6 +1,6 @@
 [build]
   # empty build command
-  command = "yarn install && yarn store-build-env"
+  command = "yarn install && yarn store-build-envs"
 
   # location of config files
   base = "/"
