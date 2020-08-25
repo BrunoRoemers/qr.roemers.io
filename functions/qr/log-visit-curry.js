@@ -1,5 +1,11 @@
+const buildEnvs = require('../../build-envs.json')
+
 module.exports = (db, event) => (uuid, status, location) => {
   let requestedUuid = null
+
+  // set source env
+  let sourceEnv = 'local'
+  if (buildEnvs.NETLIFY) sourceEnv = `netlify_${buildEnvs.BRANCH}`
 
   // handle errors
   if (status === 'UuidNotProvided') uuid = status
@@ -15,7 +21,7 @@ module.exports = (db, event) => (uuid, status, location) => {
       createdAt: new Date().toISOString(), // sort key
       requestedUuid: requestedUuid,
       location: location,
-      sourceEnv: process.env.QR_SOURCE_ENV,
+      sourceEnv: sourceEnv,
       headerClientIp: encodeURI(event.headers['client-ip']),
       headerDnt: event.headers['dnt'],
       headerAcceptEncoding: event.headers['accept-encoding'],

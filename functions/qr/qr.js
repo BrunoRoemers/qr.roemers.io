@@ -1,4 +1,3 @@
-const buildEnvs = require('../../build-envs.json')
 const aws = require('aws-sdk')
 const awsConfig = require('../../helpers/aws-config')
 const UrlPattern = require('url-pattern')
@@ -16,9 +15,6 @@ const db = new aws.DynamoDB.DocumentClient(awsConfig())
 
 
 exports.handler = async (event, ctx, cb) => {
-  console.log(buildEnvs)
-
-
   // init helpers
   const logVisit = logVisitCurry(db, event)
   const redirect = redirectCurry(cb)
