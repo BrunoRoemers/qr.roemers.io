@@ -1,4 +1,4 @@
 node_modules
-/.env
+.env
 aws_credentials.csv
 yarn-error.log
