@@ -1,6 +1,6 @@
 const buildEnvs = require('../../build-envs.json')
 
-module.exports = (db, event) => (uuid, status, location) => {
+module.exports = (db, event) => (uuid, status, location, label) => {
   let requestedUuid = null
 
   // set source env
@@ -21,6 +21,7 @@ module.exports = (db, event) => (uuid, status, location) => {
       createdAt: new Date().toISOString(), // sort key
       requestedUuid: requestedUuid,
       location: location,
+      label: label,
       sourceEnv: sourceEnv,
       headerClientIp: encodeURI(event.headers['client-ip']),
       headerDnt: event.headers['dnt'],

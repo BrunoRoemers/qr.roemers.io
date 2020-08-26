@@ -27,7 +27,7 @@ exports.handler = async (event, ctx, cb) => {
   // uuid not provided
   if (!frags || !frags.uuid) {
     const location = 'https://roemers.io?ref=qr-no-id'
-    logVisit(null, 'UuidNotProvided', location)
+    logVisit(null, 'UuidNotProvided', location, null)
     redirect(location)
     return
   }
@@ -48,13 +48,13 @@ exports.handler = async (event, ctx, cb) => {
   // uuid not found in db
   if (!details || !details.location) {
     const location = 'https://roemers.io?ref=qr-no-details'
-    logVisit(uuid, 'DetailsNotFound', location)
+    logVisit(uuid, 'DetailsNotFound', location, null)
     redirect(location)
     return
   }
   
 
   // redirect to final destination
-  logVisit(uuid, 'Success', details.location)
+  logVisit(uuid, 'Success', details.location, details.label)
   redirect(encodeURI(details.location))
 }
